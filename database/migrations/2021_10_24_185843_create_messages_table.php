@@ -15,6 +15,10 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('form')->comment('Own id');
+            $table->unsignedBigInteger('to')->comment('Other id');
+            $table->text('message');
+            $table->boolean('type');
             $table->timestamps();
         });
     }
