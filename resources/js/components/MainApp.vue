@@ -1,12 +1,16 @@
 <template>
-  <div class="">
-      <h1>Main App</h1>
+  <div id="main-app">
+      <chatComponent></chatComponent>
   </div>
 </template>
 
 <script>
-export default {
+import chatComponent from "./ChatApp.vue"
 
+export default {
+   components: {
+    chatComponent
+   }
 }
 </script>
 
