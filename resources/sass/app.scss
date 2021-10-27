@@ -28,8 +28,9 @@ $gray: #92959E;
 .container-chat {
   margin: 0 auto;
   width: 750px;
-  background: #444753;
+  background: #aaabb1;
   border-radius: 5px;
+  color: #ffffff;
 }
 
 .people-list {
@@ -45,7 +46,7 @@ $gray: #92959E;
     border: none;
     padding: 14px;
     color: white;
-    background: #6A6C75;
+    background: #ffffff;
     width: 90%;
     font-size: 14px;
   }
@@ -82,7 +83,7 @@ $gray: #92959E;
   }
   
   .status {
-    color: $gray;
+    color: #fff;
   }
   
 }
