@@ -12,7 +12,7 @@
 $green: #86BB71;
 $blue: #94C2ED;
 $orange: #E38968;
-$gray: #92959E;
+$gray: #b8b8bb;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -204,7 +204,7 @@ $gray: #92959E;
     
     .fa-file-o, .fa-file-image-o {
       font-size: 16px;
-      color: gray;
+      color: rgb(236, 234, 234);
       cursor: pointer;
       
     }

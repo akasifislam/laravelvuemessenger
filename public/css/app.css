@@ -10084,7 +10084,7 @@ h3 {
   font-size: 16px;
 }
 .chat .chat-header .chat-num-messages {
-  color: #92959E;
+  color: #b8b8bb;
 }
 .chat .chat-header .fa-star {
   float: right;
@@ -10105,7 +10105,7 @@ h3 {
   margin-bottom: 15px;
 }
 .chat .chat-history .message-data-time {
-  color: #a8aab1;
+  color: #cdcdcf;
   padding-left: 6px;
 }
 .chat .chat-history .message {
@@ -10155,7 +10155,7 @@ h3 {
 }
 .chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o {
   font-size: 16px;
-  color: gray;
+  color: #eceaea;
   cursor: pointer;
 }
 .chat .chat-message button {
