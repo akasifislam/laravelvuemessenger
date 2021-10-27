@@ -10009,8 +10009,9 @@ h3 {
   box-sizing: border-box;
 }
 
-.container {
+.container-chat {
   margin: 0 auto;
+  width: 750px;
   background: #444753;
   border-radius: 5px;
 }
@@ -10041,6 +10042,7 @@ h3 {
 }
 .people-list ul li {
   padding-bottom: 20px;
+  list-style: none;
 }
 .people-list img {
   float: left;
@@ -10094,6 +10096,9 @@ h3 {
   border-bottom: 2px solid white;
   overflow-y: scroll;
   height: 575px;
+}
+.chat .chat-history ul li {
+  list-style: none;
 }
 .chat .chat-history .message-data {
   margin-bottom: 15px;

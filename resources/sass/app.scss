@@ -25,9 +25,9 @@ $gray: #92959E;
 //   color: white;
 // }
 
-.container {
+.container-chat {
   margin: 0 auto;
-//   width: 750px;
+  width: 750px;
   background: #444753;
   border-radius: 5px;
 }
@@ -64,6 +64,7 @@ $gray: #92959E;
     
     li {
       padding-bottom: 20px;
+      list-style: none;
     }
   }
   
@@ -131,6 +132,11 @@ $gray: #92959E;
     border-bottom: 2px solid white;
     overflow-y: scroll;
     height: 575px;
+    ul {
+      li {
+        list-style: none;
+      }
+    }
     
     .message-data {
       margin-bottom: 15px;
