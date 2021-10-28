@@ -8,8 +8,11 @@ export default {
         //
     },
     actions: {  
-        SET_USER(state) {
-            axios.get("loadCategories")
+        userList(state) {
+            axios.get("/userlsit")
+            .then((response) => {
+                console.log(response);
+            })
         }
     },
     getters: { 
