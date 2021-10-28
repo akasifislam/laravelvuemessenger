@@ -193,7 +193,19 @@
 
 <script>
 export default {
+  mounted() {
+    this.$store.dispatch("userList")
+  },
+  data() {
 
+  },
+  
+  created() {
+
+  },
+  methods:{
+    
+  }
 }
 </script>
 
