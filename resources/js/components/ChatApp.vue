@@ -7,7 +7,7 @@
             </div>
             <ul class="list">
               <!-- {{ userList }} -->
-              <li class="clearfix" v-for="user in userList" :key="user.id">
+              <li @click.prevent="selectUser(user.id)" class="clearfix" v-for="user in userList" :key="user.id">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
                 <div class="about">
                   <div class="name"> {{ user.name }} </div>
@@ -122,7 +122,9 @@ export default {
 
   },
   methods:{
-    
+    selectUser(userId) {
+      alert(userId)
+    }
   }
 }
 </script>

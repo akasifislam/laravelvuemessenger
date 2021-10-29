@@ -2183,7 +2183,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {},
-  methods: {}
+  methods: {
+    selectUser: function selectUser(userId) {
+      alert(userId);
+    }
+  }
 });
 
 /***/ }),
@@ -37878,23 +37882,36 @@ var render = function() {
         "ul",
         { staticClass: "list" },
         _vm._l(_vm.userList, function(user) {
-          return _c("li", { key: user.id, staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg",
-                alt: "avatar"
+          return _c(
+            "li",
+            {
+              key: user.id,
+              staticClass: "clearfix",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.selectUser(user.id)
+                }
               }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [
-                _vm._v(" " + _vm._s(user.name) + " ")
-              ]),
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src:
+                    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg",
+                  alt: "avatar"
+                }
+              }),
               _vm._v(" "),
-              _vm._m(1, true)
-            ])
-          ])
+              _c("div", { staticClass: "about" }, [
+                _c("div", { staticClass: "name" }, [
+                  _vm._v(" " + _vm._s(user.name) + " ")
+                ]),
+                _vm._v(" "),
+                _vm._m(1, true)
+              ])
+            ]
+          )
         }),
         0
       )

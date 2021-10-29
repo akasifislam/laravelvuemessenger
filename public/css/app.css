@@ -10044,6 +10044,7 @@ h3 {
 .people-list ul li {
   padding-bottom: 20px;
   list-style: none;
+  cursor: pointer;
 }
 .people-list img {
   float: left;
