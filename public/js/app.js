@@ -2258,11 +2258,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.$store.dispatch("userList");
   },
-  data: function data() {},
+  data: function data() {
+    return {//
+    };
+  },
+  computed: {
+    userList: function userList() {
+      return this.$store.getters.userList;
+    }
+  },
   created: function created() {},
   methods: {}
 });
@@ -2381,18 +2390,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  state: {//
+  state: {
+    //
+    userList: []
   },
-  mutations: {//
+  mutations: {
+    //
+    userList: function userList(state, payload) {
+      return state.userList = payload;
+    }
   },
   actions: {
-    userList: function userList(state) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/userlsit").then(function (response) {
-        console.log(response);
+    userList: function userList(context) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/userlsit").then(function (response) {
+        context.commit("userList", response.data);
       });
     }
   },
-  getters: {//
+  getters: {
+    //
+    userList: function userList(state) {
+      return state.userList;
+    }
   }
 });
 
@@ -37941,360 +37960,427 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-chat clearfix" }, [
+    _c("div", { staticClass: "people-list", attrs: { id: "people-list" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list" }, [
+        _vm._v("\n          " + _vm._s(_vm.userList) + "\n          "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
+        _vm._m(4),
+        _vm._v(" "),
+        _vm._m(5),
+        _vm._v(" "),
+        _vm._m(6),
+        _vm._v(" "),
+        _vm._m(7),
+        _vm._v(" "),
+        _vm._m(8),
+        _vm._v(" "),
+        _vm._m(9),
+        _vm._v(" "),
+        _vm._m(10)
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(11)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-chat clearfix" }, [
-      _c("div", { staticClass: "people-list", attrs: { id: "people-list" } }, [
-        _c("div", { staticClass: "search" }, [
-          _c("input", { attrs: { type: "text", placeholder: "search" } }),
+    return _c("div", { staticClass: "search" }, [
+      _c("input", { attrs: { type: "text", placeholder: "search" } }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-search" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Vincent Porter")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle online" }),
+          _vm._v(" online\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Aiden Chavez")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle offline" }),
+          _vm._v(" left 7 mins ago\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Mike Thomas")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle online" }),
+          _vm._v(" online\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Erica Hughes")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle online" }),
+          _vm._v(" online\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Ginger Johnston")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle online" }),
+          _vm._v(" online\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Tracy Carpenter")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle offline" }),
+          _vm._v(" left 30 mins ago\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Christian Kelly")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle offline" }),
+          _vm._v(" left 10 hours ago\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Monica Ward")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle online" }),
+          _vm._v(" online\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Dean Henry")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle offline" }),
+          _vm._v(" offline since Oct 28\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "about" }, [
+        _c("div", { staticClass: "name" }, [_vm._v("Peyton Mckinney")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status" }, [
+          _c("i", { staticClass: "fa fa-circle online" }),
+          _vm._v(" online\n              ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat" }, [
+      _c("div", { staticClass: "chat-header clearfix" }, [
+        _c("img", {
+          attrs: {
+            src:
+              "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg",
+            alt: "avatar"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "chat-about" }, [
+          _c("div", { staticClass: "chat-with" }, [
+            _vm._v("Chat with Vincent Porter")
+          ]),
           _vm._v(" "),
-          _c("i", { staticClass: "fa fa-search" })
+          _c("div", { staticClass: "chat-num-messages" }, [
+            _vm._v("already 1 902 messages")
+          ])
         ]),
         _vm._v(" "),
-        _c("ul", { staticClass: "list" }, [
+        _c("i", { staticClass: "fa fa-star" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat-history" }, [
+        _c("ul", [
           _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Vincent Porter")]),
+            _c("div", { staticClass: "message-data align-right" }, [
+              _c("span", { staticClass: "message-data-time" }, [
+                _vm._v("10:10 AM, Today")
+              ]),
+              _vm._v("    \n                "),
+              _c("span", { staticClass: "message-data-name" }, [
+                _vm._v("Olia")
+              ]),
               _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
+              _c("i", { staticClass: "fa fa-circle me" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "message other-message float-right" }, [
+              _vm._v(
+                "\n                Hi Vincent, how are you? How is the project coming along?\n              "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("div", { staticClass: "message-data" }, [
+              _c("span", { staticClass: "message-data-name" }, [
                 _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" online\n              ")
+                _vm._v(" Vincent")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "message-data-time" }, [
+                _vm._v("10:12 AM, Today")
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "message my-message" }, [
+              _vm._v(
+                "\n                Are we meeting today? Project has been already finished and I have results to show you.\n              "
+              )
             ])
           ]),
           _vm._v(" "),
           _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Aiden Chavez")]),
+            _c("div", { staticClass: "message-data align-right" }, [
+              _c("span", { staticClass: "message-data-time" }, [
+                _vm._v("10:14 AM, Today")
+              ]),
+              _vm._v("    \n                "),
+              _c("span", { staticClass: "message-data-name" }, [
+                _vm._v("Olia")
+              ]),
               _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
-                _c("i", { staticClass: "fa fa-circle offline" }),
-                _vm._v(" left 7 mins ago\n              ")
-              ])
+              _c("i", { staticClass: "fa fa-circle me" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "message other-message float-right" }, [
+              _vm._v(
+                "\n                Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?\n              "
+              )
             ])
           ]),
           _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Mike Thomas")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
+          _c("li", [
+            _c("div", { staticClass: "message-data" }, [
+              _c("span", { staticClass: "message-data-name" }, [
                 _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" online\n              ")
+                _vm._v(" Vincent")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "message-data-time" }, [
+                _vm._v("10:20 AM, Today")
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "message my-message" }, [
+              _vm._v(
+                "\n                Actually everything was fine. I'm very excited to show this to our team.\n              "
+              )
             ])
           ]),
           _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Erica Hughes")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
+          _c("li", [
+            _c("div", { staticClass: "message-data" }, [
+              _c("span", { staticClass: "message-data-name" }, [
                 _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" online\n              ")
+                _vm._v(" Vincent")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "message-data-time" }, [
+                _vm._v("10:31 AM, Today")
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg",
-                alt: "avatar"
-              }
+            ]),
+            _vm._v(" "),
+            _c("i", { staticClass: "fa fa-circle online" }),
+            _vm._v(" "),
+            _c("i", {
+              staticClass: "fa fa-circle online",
+              staticStyle: { color: "#AED2A6" }
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Ginger Johnston")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
-                _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" online\n              ")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Tracy Carpenter")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
-                _c("i", { staticClass: "fa fa-circle offline" }),
-                _vm._v(" left 30 mins ago\n              ")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Christian Kelly")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
-                _c("i", { staticClass: "fa fa-circle offline" }),
-                _vm._v(" left 10 hours ago\n              ")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Monica Ward")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
-                _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" online\n              ")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Dean Henry")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
-                _c("i", { staticClass: "fa fa-circle offline" }),
-                _vm._v(" offline since Oct 28\n              ")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg",
-                alt: "avatar"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "about" }, [
-              _c("div", { staticClass: "name" }, [_vm._v("Peyton Mckinney")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status" }, [
-                _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" online\n              ")
-              ])
-            ])
+            _c("i", {
+              staticClass: "fa fa-circle online",
+              staticStyle: { color: "#DAE9DA" }
+            })
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat" }, [
-        _c("div", { staticClass: "chat-header clearfix" }, [
-          _c("img", {
-            attrs: {
-              src:
-                "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg",
-              alt: "avatar"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "chat-about" }, [
-            _c("div", { staticClass: "chat-with" }, [
-              _vm._v("Chat with Vincent Porter")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "chat-num-messages" }, [
-              _vm._v("already 1 902 messages")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("i", { staticClass: "fa fa-star" })
-        ]),
+      _c("div", { staticClass: "chat-message clearfix" }, [
+        _c("textarea", {
+          attrs: {
+            name: "message-to-send",
+            id: "message-to-send",
+            placeholder: "Type your message",
+            rows: "3"
+          }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "chat-history" }, [
-          _c("ul", [
-            _c("li", { staticClass: "clearfix" }, [
-              _c("div", { staticClass: "message-data align-right" }, [
-                _c("span", { staticClass: "message-data-time" }, [
-                  _vm._v("10:10 AM, Today")
-                ]),
-                _vm._v("    \n                "),
-                _c("span", { staticClass: "message-data-name" }, [
-                  _vm._v("Olia")
-                ]),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-circle me" })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "message other-message float-right" }, [
-                _vm._v(
-                  "\n                Hi Vincent, how are you? How is the project coming along?\n              "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("div", { staticClass: "message-data" }, [
-                _c("span", { staticClass: "message-data-name" }, [
-                  _c("i", { staticClass: "fa fa-circle online" }),
-                  _vm._v(" Vincent")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "message-data-time" }, [
-                  _vm._v("10:12 AM, Today")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "message my-message" }, [
-                _vm._v(
-                  "\n                Are we meeting today? Project has been already finished and I have results to show you.\n              "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "clearfix" }, [
-              _c("div", { staticClass: "message-data align-right" }, [
-                _c("span", { staticClass: "message-data-time" }, [
-                  _vm._v("10:14 AM, Today")
-                ]),
-                _vm._v("    \n                "),
-                _c("span", { staticClass: "message-data-name" }, [
-                  _vm._v("Olia")
-                ]),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa fa-circle me" })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "message other-message float-right" }, [
-                _vm._v(
-                  "\n                Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?\n              "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("div", { staticClass: "message-data" }, [
-                _c("span", { staticClass: "message-data-name" }, [
-                  _c("i", { staticClass: "fa fa-circle online" }),
-                  _vm._v(" Vincent")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "message-data-time" }, [
-                  _vm._v("10:20 AM, Today")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "message my-message" }, [
-                _vm._v(
-                  "\n                Actually everything was fine. I'm very excited to show this to our team.\n              "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("div", { staticClass: "message-data" }, [
-                _c("span", { staticClass: "message-data-name" }, [
-                  _c("i", { staticClass: "fa fa-circle online" }),
-                  _vm._v(" Vincent")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "message-data-time" }, [
-                  _vm._v("10:31 AM, Today")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-circle online" }),
-              _vm._v(" "),
-              _c("i", {
-                staticClass: "fa fa-circle online",
-                staticStyle: { color: "#AED2A6" }
-              }),
-              _vm._v(" "),
-              _c("i", {
-                staticClass: "fa fa-circle online",
-                staticStyle: { color: "#DAE9DA" }
-              })
-            ])
-          ])
-        ]),
+        _c("i", { staticClass: "fa fa-file-o" }),
+        _vm._v("    \n          "),
+        _c("i", { staticClass: "fa fa-file-image-o" }),
         _vm._v(" "),
-        _c("div", { staticClass: "chat-message clearfix" }, [
-          _c("textarea", {
-            attrs: {
-              name: "message-to-send",
-              id: "message-to-send",
-              placeholder: "Type your message",
-              rows: "3"
-            }
-          }),
-          _vm._v(" "),
-          _c("i", { staticClass: "fa fa-file-o" }),
-          _vm._v("    \n          "),
-          _c("i", { staticClass: "fa fa-file-image-o" }),
-          _vm._v(" "),
-          _c("button", [_vm._v("Send")])
-        ])
+        _c("button", [_vm._v("Send")])
       ])
     ])
   }

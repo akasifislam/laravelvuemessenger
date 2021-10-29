@@ -6,6 +6,7 @@
               <i class="fa fa-search"></i>
             </div>
             <ul class="list">
+              {{ userList }}
               <li class="clearfix">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
                 <div class="about">
@@ -197,7 +198,14 @@ export default {
     this.$store.dispatch("userList")
   },
   data() {
-
+    return {
+      //
+    }
+  },
+  computed: {
+    userList() {
+     return this.$store.getters.userList
+    }
   },
   
   created() {
