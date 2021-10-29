@@ -16,7 +16,7 @@ export default {
         userList(context) {
             axios.get("/api/userlsit")
             .then((response) => {
-                context.commit("userList",response.data)
+                context.commit("userList",response.data.data)
             })
         }
     },

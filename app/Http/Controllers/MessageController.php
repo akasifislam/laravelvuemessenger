@@ -20,7 +20,7 @@ class MessageController extends Controller
 
     public function user_list()
     {
-        $userlist = User::latest()->get();
+        $userlist = User::latest()->paginate(9);
         return response()->json($userlist, 200);
     }
 }

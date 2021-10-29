@@ -2169,96 +2169,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.$store.dispatch("userList");
@@ -2403,7 +2313,7 @@ __webpack_require__.r(__webpack_exports__);
   actions: {
     userList: function userList(context) {
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/userlsit").then(function (response) {
-        context.commit("userList", response.data);
+        context.commit("userList", response.data.data);
       });
     }
   },
@@ -37964,31 +37874,33 @@ var render = function() {
     _c("div", { staticClass: "people-list", attrs: { id: "people-list" } }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("ul", { staticClass: "list" }, [
-        _vm._v("\n          " + _vm._s(_vm.userList) + "\n          "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _vm._m(4),
-        _vm._v(" "),
-        _vm._m(5),
-        _vm._v(" "),
-        _vm._m(6),
-        _vm._v(" "),
-        _vm._m(7),
-        _vm._v(" "),
-        _vm._m(8),
-        _vm._v(" "),
-        _vm._m(9),
-        _vm._v(" "),
-        _vm._m(10)
-      ])
+      _c(
+        "ul",
+        { staticClass: "list" },
+        _vm._l(_vm.userList, function(user) {
+          return _c("li", { key: user.id, staticClass: "clearfix" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg",
+                alt: "avatar"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "about" }, [
+              _c("div", { staticClass: "name" }, [
+                _vm._v(" " + _vm._s(user.name) + " ")
+              ]),
+              _vm._v(" "),
+              _vm._m(1, true)
+            ])
+          ])
+        }),
+        0
+      )
     ]),
     _vm._v(" "),
-    _vm._m(11)
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
@@ -38006,230 +37918,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Vincent Porter")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle online" }),
-          _vm._v(" online\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Aiden Chavez")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle offline" }),
-          _vm._v(" left 7 mins ago\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Mike Thomas")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle online" }),
-          _vm._v(" online\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Erica Hughes")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle online" }),
-          _vm._v(" online\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Ginger Johnston")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle online" }),
-          _vm._v(" online\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Tracy Carpenter")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle offline" }),
-          _vm._v(" left 30 mins ago\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Christian Kelly")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle offline" }),
-          _vm._v(" left 10 hours ago\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Monica Ward")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle online" }),
-          _vm._v(" online\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Dean Henry")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle offline" }),
-          _vm._v(" offline since Oct 28\n              ")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "about" }, [
-        _c("div", { staticClass: "name" }, [_vm._v("Peyton Mckinney")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status" }, [
-          _c("i", { staticClass: "fa fa-circle online" }),
-          _vm._v(" online\n              ")
-        ])
-      ])
+    return _c("div", { staticClass: "status" }, [
+      _c("i", { staticClass: "fa fa-circle online" }),
+      _vm._v(" online\n              ")
     ])
   },
   function() {
