@@ -123,7 +123,7 @@ export default {
   },
   methods:{
     selectUser(userId) {
-      alert(userId)
+      this.$store.dispatch("userMessage",userId)
     }
   }
 }

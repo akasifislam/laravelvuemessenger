@@ -2185,7 +2185,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {},
   methods: {
     selectUser: function selectUser(userId) {
-      alert(userId);
+      this.$store.dispatch("userMessage", userId);
     }
   }
 });
@@ -2306,12 +2306,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: {
     //
-    userList: []
+    userList: [],
+    userMessage: []
   },
   mutations: {
     //
     userList: function userList(state, payload) {
       return state.userList = payload;
+    },
+    userMessage: function userMessage(state, payload) {
+      return state.userMessage = payload;
     }
   },
   actions: {
@@ -2319,12 +2323,20 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/userlsit").then(function (response) {
         context.commit("userList", response.data.data);
       });
+    },
+    userMessage: function userMessage(context, payload) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/usermessage/" + payload).then(function (response) {
+        context.commit("userMessage", response.data);
+      });
     }
   },
   getters: {
     //
     userList: function userList(state) {
       return state.userList;
+    },
+    userMessage: function userMessage(state) {
+      return state.userMessage;
     }
   }
 });
