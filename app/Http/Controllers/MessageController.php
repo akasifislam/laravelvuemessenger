@@ -31,11 +31,14 @@ class MessageController extends Controller
 
     public function user_message($id = null)
     {
-
+        // return $user = Message::where('form', auth()->user()->id)->get();
         // if (\Request::ajax()) {
         $message = Message::where(function ($q) use ($id) {
-            // $q->where('form', $id);
+            $q->where('form', auth()->user()->id);
             $q->where('to', $id);
+        })->orWhere(function ($q) use ($id) {
+            $q->where('form', $id);
+            $q->where('to', auth()->user()->id);
         })->get();
         return response()->json($message, 200);
         // }

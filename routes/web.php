@@ -24,3 +24,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('usermessage/{id}', [MessageController::class, 'user_message'])->name('user.message');
+
+
+// Route::get('/shbfvdgbdhs', [MessageController::class, 'user_list']);
