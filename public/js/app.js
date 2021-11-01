@@ -37932,13 +37932,24 @@ var render = function() {
                 _c("i", { staticClass: "fa fa-circle me" })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "message other-message float-right" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(message.message) +
-                    "\n              "
-                )
-              ])
+              _c(
+                "div",
+                {
+                  class:
+                    "message float-right  " +
+                    (message.user.id == _vm.userMessage.user.id
+                      ? "other-message"
+                      : "my-message") +
+                    " "
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(message.message) +
+                      "\n              "
+                  )
+                ]
+              )
             ])
           }),
           0
