@@ -37891,12 +37891,34 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "chat" }, [
-      _vm._m(2),
+      _c("div", { staticClass: "chat-header clearfix" }, [
+        _c("img", {
+          attrs: {
+            src:
+              "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg",
+            alt: "avatar"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "chat-about" }, [
+          _vm.userMessage.user
+            ? _c("div", { staticClass: "chat-with" }, [
+                _vm._v(" " + _vm._s(_vm.userMessage.user.name) + " ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "chat-num-messages" }, [
+            _vm._v("already 1 902 messages")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("i", { staticClass: "fa fa-star" })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "chat-history" }, [
         _c(
           "ul",
-          _vm._l(_vm.userMessage, function(message) {
+          _vm._l(_vm.userMessage.message, function(message) {
             return _c("li", { key: message.id, staticClass: "clearfix" }, [
               _c("div", { staticClass: "message-data align-right" }, [
                 _c("span", { staticClass: "message-data-time" }, [
@@ -37923,7 +37945,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(3)
+      _vm._m(2)
     ])
   ])
 }
@@ -37945,32 +37967,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "status" }, [
       _c("i", { staticClass: "fa fa-circle online" }),
       _vm._v(" online\n              ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-header clearfix" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg",
-          alt: "avatar"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat-about" }, [
-        _c("div", { staticClass: "chat-with" }, [
-          _vm._v("Chat with Vincent Porter")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-num-messages" }, [
-          _vm._v("already 1 902 messages")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("i", { staticClass: "fa fa-star" })
     ])
   },
   function() {

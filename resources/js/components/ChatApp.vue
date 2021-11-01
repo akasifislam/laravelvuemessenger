@@ -24,7 +24,7 @@
               <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
               
               <div class="chat-about">
-                <div class="chat-with">Chat with Vincent Porter</div>
+                <div class="chat-with" v-if="userMessage.user"> {{ userMessage.user.name }} </div>
                 <div class="chat-num-messages">already 1 902 messages</div>
               </div>
               <i class="fa fa-star"></i>
@@ -32,7 +32,7 @@
             
             <div class="chat-history">
               <ul>
-                <li class="clearfix" v-for="message in userMessage" :key="message.id">
+                <li class="clearfix" v-for="message in userMessage.message" :key="message.id">
                   <div class="message-data align-right">
                     <span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;
                     <span class="message-data-name" > {{ message.user.name }} </span> <i class="fa fa-circle me"></i>

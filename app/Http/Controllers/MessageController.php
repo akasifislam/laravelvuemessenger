@@ -34,6 +34,8 @@ class MessageController extends Controller
     {
         // return $user = Message::where('form', auth()->user()->id)->get();
         // if (\Request::ajax()) {
+
+        $user = User::findOrFail($id);
         $message = Message::where(function ($q) use ($id) {
             $q->where('form', auth()->user()->id);
             $q->where('to', $id);
@@ -41,7 +43,10 @@ class MessageController extends Controller
             $q->where('form', $id);
             $q->where('to', auth()->user()->id);
         })->with('user')->get();
-        return response()->json($message, 200);
+        return response()->json([
+            'message' => $message,
+            'user' => $user,
+        ]);
         // }
         // return abort(404);
     }
