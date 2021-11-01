@@ -34,7 +34,7 @@
               <ul>
                 <li class="clearfix" v-for="message in userMessage.message" :key="message.id">
                   <div class="message-data align-right">
-                    <span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;
+                    <span class="message-data-time" > {{ message.created_at|timeformat }} </span> &nbsp; &nbsp;
                     <span class="message-data-name" > {{ message.user.name }} </span> <i class="fa fa-circle me"></i>
                     
                   </div>
