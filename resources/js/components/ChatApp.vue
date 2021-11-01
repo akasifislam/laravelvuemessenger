@@ -38,7 +38,7 @@
                     <span class="message-data-name" > {{ message.user.name }} </span> <i class="fa fa-circle me"></i>
                     
                   </div>
-                  <div :class="`message float-right  ${message.user.id == userMessage.user.id ? 'other-message':'my-message'} `">
+                  <div class="message float-right" :class="`${message.user.id == userMessage.user.id ? 'other-message':'my-message'}`">
                     {{ message.message }}
                   </div>
                 </li>

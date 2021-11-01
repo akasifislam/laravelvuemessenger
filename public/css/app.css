@@ -10128,18 +10128,18 @@ h3 {
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-bottom-color: #86BB71;
+  border-bottom-color: #7d53e0;
   border-width: 10px;
   margin-left: -10px;
 }
 .chat .chat-history .my-message {
-  background: #86BB71;
+  background: #7d53e0;
 }
 .chat .chat-history .other-message {
-  background: #94C2ED;
+  background: #f146e3;
 }
 .chat .chat-history .other-message:after {
-  border-bottom-color: #94C2ED;
+  border-bottom-color: #f146e3;
   left: 93%;
 }
 .chat .chat-message {
@@ -10161,7 +10161,7 @@ h3 {
 }
 .chat .chat-message button {
   float: right;
-  color: #94C2ED;
+  color: #f146e3;
   font-size: 16px;
   text-transform: uppercase;
   border: none;
@@ -10170,7 +10170,7 @@ h3 {
   background: #F2F5F8;
 }
 .chat .chat-message button:hover {
-  color: #75b1e8;
+  color: #ee25de;
 }
 
 .online, .offline, .me {
@@ -10179,7 +10179,7 @@ h3 {
 }
 
 .online {
-  color: #86BB71;
+  color: #7d53e0;
 }
 
 .offline {
@@ -10187,7 +10187,7 @@ h3 {
 }
 
 .me {
-  color: #94C2ED;
+  color: #f146e3;
 }
 
 .align-left {
