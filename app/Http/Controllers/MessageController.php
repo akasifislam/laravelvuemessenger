@@ -22,7 +22,8 @@ class MessageController extends Controller
     public function user_list()
     {
         if (\Request::ajax()) {
-            $userlist = User::latest()->paginate(9);
+            $userlist = User::latest()
+                ->paginate(9);
             return response()->json($userlist, 200);
         }
         return abort(404);
@@ -39,7 +40,7 @@ class MessageController extends Controller
         })->orWhere(function ($q) use ($id) {
             $q->where('form', $id);
             $q->where('to', auth()->user()->id);
-        })->get();
+        })->with('user')->get();
         return response()->json($message, 200);
         // }
         // return abort(404);

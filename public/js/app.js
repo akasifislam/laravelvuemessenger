@@ -2127,48 +2127,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.$store.dispatch("userList");
@@ -2180,6 +2138,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     userList: function userList() {
       return this.$store.getters.userList;
+    },
+    userMessage: function userMessage() {
+      return this.$store.getters.userMessage;
     }
   },
   created: function created() {},
@@ -37929,7 +37890,41 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _c("div", { staticClass: "chat" }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat-history" }, [
+        _c(
+          "ul",
+          _vm._l(_vm.userMessage, function(message) {
+            return _c("li", { key: message.id, staticClass: "clearfix" }, [
+              _c("div", { staticClass: "message-data align-right" }, [
+                _c("span", { staticClass: "message-data-time" }, [
+                  _vm._v("10:10 AM, Today")
+                ]),
+                _vm._v("    \n                "),
+                _c("span", { staticClass: "message-data-name" }, [
+                  _vm._v(" " + _vm._s(message.user.name) + " ")
+                ]),
+                _vm._v(" "),
+                _c("i", { staticClass: "fa fa-circle me" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "message other-message float-right" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(message.message) +
+                    "\n              "
+                )
+              ])
+            ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(3)
+    ])
   ])
 }
 var staticRenderFns = [
@@ -37956,152 +37951,47 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat" }, [
-      _c("div", { staticClass: "chat-header clearfix" }, [
-        _c("img", {
-          attrs: {
-            src:
-              "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg",
-            alt: "avatar"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-about" }, [
-          _c("div", { staticClass: "chat-with" }, [
-            _vm._v("Chat with Vincent Porter")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "chat-num-messages" }, [
-            _vm._v("already 1 902 messages")
-          ])
+    return _c("div", { staticClass: "chat-header clearfix" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg",
+          alt: "avatar"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat-about" }, [
+        _c("div", { staticClass: "chat-with" }, [
+          _vm._v("Chat with Vincent Porter")
         ]),
         _vm._v(" "),
-        _c("i", { staticClass: "fa fa-star" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat-history" }, [
-        _c("ul", [
-          _c("li", { staticClass: "clearfix" }, [
-            _c("div", { staticClass: "message-data align-right" }, [
-              _c("span", { staticClass: "message-data-time" }, [
-                _vm._v("10:10 AM, Today")
-              ]),
-              _vm._v("    \n                "),
-              _c("span", { staticClass: "message-data-name" }, [
-                _vm._v("Olia")
-              ]),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-circle me" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "message other-message float-right" }, [
-              _vm._v(
-                "\n                Hi Vincent, how are you? How is the project coming along?\n              "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("div", { staticClass: "message-data" }, [
-              _c("span", { staticClass: "message-data-name" }, [
-                _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" Vincent")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "message-data-time" }, [
-                _vm._v("10:12 AM, Today")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "message my-message" }, [
-              _vm._v(
-                "\n                Are we meeting today? Project has been already finished and I have results to show you.\n              "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "clearfix" }, [
-            _c("div", { staticClass: "message-data align-right" }, [
-              _c("span", { staticClass: "message-data-time" }, [
-                _vm._v("10:14 AM, Today")
-              ]),
-              _vm._v("    \n                "),
-              _c("span", { staticClass: "message-data-name" }, [
-                _vm._v("Olia")
-              ]),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-circle me" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "message other-message float-right" }, [
-              _vm._v(
-                "\n                Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?\n              "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("div", { staticClass: "message-data" }, [
-              _c("span", { staticClass: "message-data-name" }, [
-                _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" Vincent")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "message-data-time" }, [
-                _vm._v("10:20 AM, Today")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "message my-message" }, [
-              _vm._v(
-                "\n                Actually everything was fine. I'm very excited to show this to our team.\n              "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("div", { staticClass: "message-data" }, [
-              _c("span", { staticClass: "message-data-name" }, [
-                _c("i", { staticClass: "fa fa-circle online" }),
-                _vm._v(" Vincent")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "message-data-time" }, [
-                _vm._v("10:31 AM, Today")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("i", { staticClass: "fa fa-circle online" }),
-            _vm._v(" "),
-            _c("i", {
-              staticClass: "fa fa-circle online",
-              staticStyle: { color: "#AED2A6" }
-            }),
-            _vm._v(" "),
-            _c("i", {
-              staticClass: "fa fa-circle online",
-              staticStyle: { color: "#DAE9DA" }
-            })
-          ])
+        _c("div", { staticClass: "chat-num-messages" }, [
+          _vm._v("already 1 902 messages")
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-message clearfix" }, [
-        _c("textarea", {
-          attrs: {
-            name: "message-to-send",
-            id: "message-to-send",
-            placeholder: "Type your message",
-            rows: "3"
-          }
-        }),
-        _vm._v(" "),
-        _c("i", { staticClass: "fa fa-file-o" }),
-        _vm._v("    \n          "),
-        _c("i", { staticClass: "fa fa-file-image-o" }),
-        _vm._v(" "),
-        _c("button", [_vm._v("Send")])
-      ])
+      _c("i", { staticClass: "fa fa-star" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat-message clearfix" }, [
+      _c("textarea", {
+        attrs: {
+          name: "message-to-send",
+          id: "message-to-send",
+          placeholder: "Type your message",
+          rows: "3"
+        }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "fa fa-file-o" }),
+      _vm._v("    \n          "),
+      _c("i", { staticClass: "fa fa-file-image-o" }),
+      _vm._v(" "),
+      _c("button", [_vm._v("Send")])
     ])
   }
 ]
