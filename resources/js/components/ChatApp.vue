@@ -92,5 +92,7 @@ export default {
 </script>
 
 <style>
-
+  .people-list ul {
+    overflow-y:scroll !important;
+  }
 </style>
