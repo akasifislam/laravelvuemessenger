@@ -2132,7 +2132,8 @@ __webpack_require__.r(__webpack_exports__);
     this.$store.dispatch("userList");
   },
   data: function data() {
-    return {//
+    return {
+      message: ''
     };
   },
   computed: {
@@ -2147,6 +2148,19 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     selectUser: function selectUser(userId) {
       this.$store.dispatch("userMessage", userId);
+    },
+    sendMessage: function sendMessage(e) {
+      e.preventDefault();
+
+      if (this.message != '') {
+        axios.post('/sendmessage', {
+          message: this.message,
+          user_id: this.userMessage.user.id
+        }).then(function (response) {
+          console.log(response.data);
+        });
+        this.message = '';
+      }
     }
   }
 });
@@ -59837,7 +59851,48 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(2)
+      _c("div", { staticClass: "chat-message clearfix" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.message,
+              expression: "message"
+            }
+          ],
+          attrs: {
+            name: "message-to-send",
+            id: "message-to-send",
+            placeholder: "Type your message",
+            rows: "3"
+          },
+          domProps: { value: _vm.message },
+          on: {
+            keydown: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.sendMessage.apply(null, arguments)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.message = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("i", { staticClass: "fa fa-file-o" }),
+        _vm._v("    \n          "),
+        _c("i", { staticClass: "fa fa-file-image-o" }),
+        _vm._v(" "),
+        _c("button", [_vm._v("Send")])
+      ])
     ])
   ])
 }
@@ -59859,27 +59914,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "status" }, [
       _c("i", { staticClass: "fa fa-circle online" }),
       _vm._v(" online\n              ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat-message clearfix" }, [
-      _c("textarea", {
-        attrs: {
-          name: "message-to-send",
-          id: "message-to-send",
-          placeholder: "Type your message",
-          rows: "3"
-        }
-      }),
-      _vm._v(" "),
-      _c("i", { staticClass: "fa fa-file-o" }),
-      _vm._v("    \n          "),
-      _c("i", { staticClass: "fa fa-file-image-o" }),
-      _vm._v(" "),
-      _c("button", [_vm._v("Send")])
     ])
   }
 ]

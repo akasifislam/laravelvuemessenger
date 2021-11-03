@@ -47,7 +47,7 @@
             </div> <!-- end chat-history -->
             
             <div class="chat-message clearfix">
-              <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
+              <textarea @keydown.enter="sendMessage" v-model="message" name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
                       
               <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
               <i class="fa fa-file-image-o"></i>
@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      //
+      message:'',
     }
   },
   computed: {
@@ -86,6 +86,16 @@ export default {
   methods:{
     selectUser(userId) {
       this.$store.dispatch("userMessage",userId)
+    },
+    sendMessage(e){
+      e.preventDefault();
+      if(this.message!=''){
+        axios.post('/sendmessage',{message:this.message,user_id:this.userMessage.user.id})
+        .then((response) => {
+          console.log(response.data);
+        })
+        this.message = '';
+      }
     }
   }
 }
