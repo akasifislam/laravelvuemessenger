@@ -2150,6 +2150,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.dispatch("userMessage", userId);
     },
     sendMessage: function sendMessage(e) {
+      var _this = this;
+
       e.preventDefault();
 
       if (this.message != '') {
@@ -2157,7 +2159,7 @@ __webpack_require__.r(__webpack_exports__);
           message: this.message,
           user_id: this.userMessage.user.id
         }).then(function (response) {
-          console.log(response.data);
+          _this.selectUser(_this.userMessage.user.id);
         });
         this.message = '';
       }

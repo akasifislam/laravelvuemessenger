@@ -92,7 +92,7 @@ export default {
       if(this.message!=''){
         axios.post('/sendmessage',{message:this.message,user_id:this.userMessage.user.id})
         .then((response) => {
-          console.log(response.data);
+          this.selectUser(this.userMessage.user.id);
         })
         this.message = '';
       }
