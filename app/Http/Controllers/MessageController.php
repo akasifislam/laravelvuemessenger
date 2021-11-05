@@ -33,26 +33,32 @@ class MessageController extends Controller
     public function user_message($id = null)
     {
         // return $user = Message::where('form', auth()->user()->id)->get();
-        // if (\Request::ajax()) {
+        if (\Request::ajax()) {
 
-        $user = User::findOrFail($id);
-        $message = Message::where(function ($q) use ($id) {
-            $q->where('form', auth()->user()->id);
-            $q->where('to', $id);
-        })->orWhere(function ($q) use ($id) {
-            $q->where('form', $id);
-            $q->where('to', auth()->user()->id);
-        })->with('user')->get();
-        return response()->json([
-            'message' => $message,
-            'user' => $user,
-        ]);
-        // }
-        // return abort(404);
+            $user = User::findOrFail($id);
+            $message = Message::where(function ($q) use ($id) {
+                $q->where('form', auth()->user()->id);
+                $q->where('to', $id);
+                $q->where('type', 0);
+            })->orWhere(function ($q) use ($id) {
+                $q->where('form', $id);
+                $q->where('to', auth()->user()->id);
+                $q->where('type', 1);
+            })->with('user')->get();
+            return response()->json([
+                'message' => $message,
+                'user' => $user,
+            ]);
+        }
+        return abort(404);
     }
 
     public function send_message(Request $request)
     {
+        if (!$request->ajax()) {
+            return abort(404);
+        }
+
         $message = Message::create([
             'message' => $request->message,
             'form' => auth()->user()->id,
