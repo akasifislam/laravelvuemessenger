@@ -2208,13 +2208,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js");
 /* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filter */ "./resources/js/filter.js");
+/* harmony import */ var vue_chat_scroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-chat-scroll */ "./node_modules/vue-chat-scroll/dist/index.js");
+/* harmony import */ var vue_chat_scroll__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_chat_scroll__WEBPACK_IMPORTED_MODULE_4__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]); // vue chat scroll
+
+
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_chat_scroll__WEBPACK_IMPORTED_MODULE_4___default())); // vue chat scroll
+
 var store = new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store(_store_index__WEBPACK_IMPORTED_MODULE_0__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('main-app', __webpack_require__(/*! ./components/MainApp.vue */ "./resources/js/components/MainApp.vue")["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_2__["default"]({
@@ -59567,6 +59573,17 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-chat-scroll/dist/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/vue-chat-scroll/dist/index.js ***!
+  \****************************************************/
+/***/ (function(module) {
+
+!function(e,n){ true?module.exports=n():0}(this,function(){"use strict";function o(e,n){var t=n||e.scrollHeight-e.clientHeight;"function"==typeof e.scroll?e.scroll({top:t}):e.scrollTop=t}function i(e,n){if(!1!==n.enabled)if(!1!==n.handlePrepend){var t=0===e.scrollTop&&s.has(e)&&e.scrollHeight-s.get(e);o(e,t),s.set(e,e.scrollHeight)}else o(e)}var r=function(){return(r=Object.assign||function(e){for(var n,t=1,o=arguments.length;t<o;t++)for(var i in n=arguments[t])Object.prototype.hasOwnProperty.call(n,i)&&(e[i]=n[i]);return e}).apply(this,arguments)},l={enabled:!0,handlePrepend:!1},c=new WeakMap,s=new WeakMap,n={inserted:function(e,n){var t=r(r({},l),n.value);i(e,t)},update:function(e,n){c.has(e)&&c.get(e).disconnect();var t=r(r({},l),n.value),o=new MutationObserver(function(){i(e,t)});o.observe(e,{childList:!0,subtree:!0}),c.set(e,o)}},e={install:function(e){e.directive("chat-scroll",n)}};return"undefined"!=typeof window&&window.Vue&&window.Vue.use(e),e});
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ChatApp.vue":
 /*!*********************************************!*\
   !*** ./resources/js/components/ChatApp.vue ***!
@@ -59810,48 +59827,57 @@ var render = function() {
         _c("i", { staticClass: "fa fa-star" })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "chat-history" }, [
-        _c(
-          "ul",
-          _vm._l(_vm.userMessage.message, function(message) {
-            return _c("li", { key: message.id, staticClass: "clearfix" }, [
-              _c("div", { staticClass: "message-data align-right" }, [
-                _c("span", { staticClass: "message-data-time" }, [
-                  _vm._v(
-                    " " + _vm._s(_vm._f("timeformat")(message.created_at)) + " "
-                  )
-                ]),
-                _vm._v("    \n                "),
-                _c("span", { staticClass: "message-data-name" }, [
-                  _vm._v(" " + _vm._s(message.user.name) + " ")
+      _c(
+        "div",
+        {
+          directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
+          staticClass: "chat-history"
+        },
+        [
+          _c(
+            "ul",
+            _vm._l(_vm.userMessage.message, function(message) {
+              return _c("li", { key: message.id, staticClass: "clearfix" }, [
+                _c("div", { staticClass: "message-data align-right" }, [
+                  _c("span", { staticClass: "message-data-time" }, [
+                    _vm._v(
+                      " " +
+                        _vm._s(_vm._f("timeformat")(message.created_at)) +
+                        " "
+                    )
+                  ]),
+                  _vm._v("    \n                "),
+                  _c("span", { staticClass: "message-data-name" }, [
+                    _vm._v(" " + _vm._s(message.user.name) + " ")
+                  ]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fa fa-circle me" })
                 ]),
                 _vm._v(" "),
-                _c("i", { staticClass: "fa fa-circle me" })
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "message float-right",
-                  class:
-                    "" +
-                    (message.user.id == _vm.userMessage.user.id
-                      ? "other-message"
-                      : "my-message")
-                },
-                [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(message.message) +
-                      "\n              "
-                  )
-                ]
-              )
-            ])
-          }),
-          0
-        )
-      ]),
+                _c(
+                  "div",
+                  {
+                    staticClass: "message float-right",
+                    class:
+                      "" +
+                      (message.user.id == _vm.userMessage.user.id
+                        ? "other-message"
+                        : "my-message")
+                  },
+                  [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(message.message) +
+                        "\n              "
+                    )
+                  ]
+                )
+              ])
+            }),
+            0
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "chat-message clearfix" }, [
         _c("textarea", {

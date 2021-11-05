@@ -30,7 +30,7 @@
               <i class="fa fa-star"></i>
             </div> <!-- end chat-header -->
             
-            <div class="chat-history">
+            <div class="chat-history" v-chat-scroll>
               <ul>
                 <li class="clearfix" v-for="message in userMessage.message" :key="message.id">
                   <div class="message-data align-right">

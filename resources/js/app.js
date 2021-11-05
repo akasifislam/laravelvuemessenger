@@ -7,6 +7,14 @@ import filter from './filter'
 
 Vue.use(Vuex)
 
+
+// vue chat scroll
+import VueChatScroll from 'vue-chat-scroll';
+
+Vue.use(VueChatScroll);
+// vue chat scroll
+
+
 const store = new Vuex.Store(storeVuex)
 
 

@@ -56,7 +56,14 @@ class MessageController extends Controller
         $message = Message::create([
             'message' => $request->message,
             'form' => auth()->user()->id,
-            'to' => $request->user_id
+            'to' => $request->user_id,
+            'type' => 0
+        ]);
+        $message = Message::create([
+            'message' => $request->message,
+            'form' => auth()->user()->id,
+            'to' => $request->user_id,
+            'type' => 1
         ]);
         return response()->json($message, 201);
     }
