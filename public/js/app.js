@@ -2225,6 +2225,9 @@ __webpack_require__.r(__webpack_exports__);
         });
         this.message = "";
       }
+    },
+    deleteSingleMessage: function deleteSingleMessage(messageId) {
+      axios.get("/deletesinglemessage/".concat(messageId));
     }
   }
 });
@@ -60003,7 +60006,29 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(3, true)
+                    _c(
+                      "div",
+                      {
+                        staticClass: "dropdown-menu",
+                        attrs: { "aria-labelledby": "dropdownMenuLink" }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.deleteSingleMessage(message.id)
+                              }
+                            }
+                          },
+                          [_vm._v("Delete")]
+                        )
+                      ]
+                    )
                   ])
                 ]),
                 _vm._v(" "),
@@ -60110,23 +60135,6 @@ var staticRenderFns = [
       [
         _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
           _vm._v("Delete All Message")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "dropdown-menu",
-        attrs: { "aria-labelledby": "dropdownMenuLink" }
-      },
-      [
-        _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-          _vm._v("Delete")
         ])
       ]
     )

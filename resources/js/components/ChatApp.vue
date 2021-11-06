@@ -80,7 +80,7 @@
                               </a>
 
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Delete</a>
+                                <a @click.prevent="deleteSingleMessage(message.id)" class="dropdown-item" href="#">Delete</a>
                               </div>
                             </ul>
                         </div>
@@ -159,7 +159,11 @@ export default {
                     });
                 this.message = "";
             }
+        },
+        deleteSingleMessage(messageId) {
+          axios.get(`/deletesinglemessage/${messageId}`)
         }
+
     }
 };
 </script>

@@ -25,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('usermessage/{id}', [MessageController::class, 'user_message'])->name('user.message');
 Route::post('sendmessage', [MessageController::class, 'send_message'])->name('user.message.send');
+Route::get('deletesinglemessage/{id}', [MessageController::class, 'delete_single_message'])->name('single.message.delete');
 
 
 // Route::get('/shbfvdgbdhs', [MessageController::class, 'user_list']);

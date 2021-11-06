@@ -73,4 +73,13 @@ class MessageController extends Controller
         ]);
         return response()->json($message, 201);
     }
+
+    public function delete_single_message($id = null)
+    {
+        if (!\Request::ajax()) {
+            abort(404);
+        }
+        Message::findOrFail($id)->delete();
+        return response()->json('deleted', 200);
+    }
 }
