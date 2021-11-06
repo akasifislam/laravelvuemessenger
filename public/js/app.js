@@ -2127,13 +2127,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.$store.dispatch("userList");
   },
   data: function data() {
     return {
-      message: ''
+      message: ""
     };
   },
   computed: {
@@ -2154,14 +2215,14 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
 
-      if (this.message != '') {
-        axios.post('/sendmessage', {
+      if (this.message != "") {
+        axios.post("/sendmessage", {
           message: this.message,
           user_id: this.userMessage.user.id
         }).then(function (response) {
           _this.selectUser(_this.userMessage.user.id);
         });
-        this.message = '';
+        this.message = "";
       }
     }
   }
@@ -6805,7 +6866,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.people-list ul {\n  overflow-y:scroll !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.people-list ul {\r\n    overflow-y: scroll !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -59789,9 +59850,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("div", { staticClass: "about" }, [
-                _c("div", { staticClass: "name" }, [
-                  _vm._v(" " + _vm._s(user.name) + " ")
-                ]),
+                _c("div", { staticClass: "name" }, [_vm._v(_vm._s(user.name))]),
                 _vm._v(" "),
                 _vm._m(1, true)
               ])
@@ -59815,13 +59874,58 @@ var render = function() {
         _c("div", { staticClass: "chat-about" }, [
           _vm.userMessage.user
             ? _c("div", { staticClass: "chat-with" }, [
-                _vm._v(" " + _vm._s(_vm.userMessage.user.name) + " ")
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.userMessage.user.name) +
+                    "\n                "
+                )
               ])
             : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "chat-num-messages" }, [
             _vm._v("already 1 902 messages")
           ])
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "dropdown show" }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#",
+                role: "button",
+                id: "dropdownMenuLink",
+                "data-toggle": "dropdown",
+                "aria-haspopup": "true",
+                "aria-expanded": "false"
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "bi bi-arrow-down-circle-fill",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "16",
+                    height: "16",
+                    fill: "currentColor",
+                    viewBox: "0 0 16 16"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(2)
         ]),
         _vm._v(" "),
         _c("i", { staticClass: "fa fa-star" })
@@ -59841,17 +59945,64 @@ var render = function() {
                 _c("div", { staticClass: "message-data align-right" }, [
                   _c("span", { staticClass: "message-data-time" }, [
                     _vm._v(
-                      " " +
+                      "\n                            " +
                         _vm._s(_vm._f("timeformat")(message.created_at)) +
-                        " "
+                        "\n                        "
                     )
                   ]),
-                  _vm._v("    \n                "),
+                  _vm._v(
+                    "\n                           \n                        "
+                  ),
                   _c("span", { staticClass: "message-data-name" }, [
-                    _vm._v(" " + _vm._s(message.user.name) + " ")
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(message.user.name) +
+                        "\n                        "
+                    )
                   ]),
                   _vm._v(" "),
-                  _c("i", { staticClass: "fa fa-circle me" })
+                  _c("i", { staticClass: "fa fa-circle me" }),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "dropdown show" }, [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: "#",
+                          role: "button",
+                          id: "dropdownMenuLink",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-arrow-down-circle-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(3, true)
+                  ])
                 ]),
                 _vm._v(" "),
                 _c(
@@ -59866,9 +60017,9 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                " +
+                      "\n                        " +
                         _vm._s(message.message) +
-                        "\n              "
+                        "\n                    "
                     )
                   ]
                 )
@@ -59916,7 +60067,7 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("i", { staticClass: "fa fa-file-o" }),
-        _vm._v("    \n          "),
+        _vm._v("    \n            "),
         _c("i", { staticClass: "fa fa-file-image-o" }),
         _vm._v(" "),
         _c("button", [_vm._v("Send")])
@@ -59941,8 +60092,42 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "status" }, [
       _c("i", { staticClass: "fa fa-circle online" }),
-      _vm._v(" online\n              ")
+      _vm._v(" online\n                    ")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "dropdown-menu",
+        attrs: { "aria-labelledby": "dropdownMenuLink" }
+      },
+      [
+        _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+          _vm._v("Delete All Message")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "dropdown-menu",
+        attrs: { "aria-labelledby": "dropdownMenuLink" }
+      },
+      [
+        _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+          _vm._v("Delete")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

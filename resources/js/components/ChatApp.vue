@@ -1,108 +1,170 @@
 <template>
     <div class="container-chat clearfix">
-          <div class="people-list" id="people-list">
+        <div class="people-list" id="people-list">
             <div class="search">
-              <input type="text" placeholder="search" />
-              <i class="fa fa-search"></i>
+                <input type="text" placeholder="search" />
+                <i class="fa fa-search"></i>
             </div>
             <ul class="list">
-              <!-- {{ userList }} -->
-              <li @click.prevent="selectUser(user.id)" class="clearfix" v-for="user in userList" :key="user.id">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
-                <div class="about">
-                  <div class="name"> {{ user.name }} </div>
-                  <div class="status">
-                    <i class="fa fa-circle online"></i> online
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-      
-          <div class="chat">
-            <div class="chat-header clearfix">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
-              
-              <div class="chat-about">
-                <div class="chat-with" v-if="userMessage.user"> {{ userMessage.user.name }} </div>
-                <div class="chat-num-messages">already 1 902 messages</div>
-              </div>
-              <i class="fa fa-star"></i>
-            </div> <!-- end chat-header -->
-            
-            <div class="chat-history" v-chat-scroll>
-              <ul>
-                <li class="clearfix" v-for="message in userMessage.message" :key="message.id">
-                  <div class="message-data align-right">
-                    <span class="message-data-time" > {{ message.created_at|timeformat }} </span> &nbsp; &nbsp;
-                    <span class="message-data-name" > {{ message.user.name }} </span> <i class="fa fa-circle me"></i>
-                    
-                  </div>
-                  <div class="message float-right" :class="`${message.user.id == userMessage.user.id ? 'other-message':'my-message'}`">
-                    {{ message.message }}
-                  </div>
+                <!-- {{ userList }} -->
+                <li
+                    @click.prevent="selectUser(user.id)"
+                    class="clearfix"
+                    v-for="user in userList"
+                    :key="user.id"
+                >
+                    <img
+                        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg"
+                        alt="avatar"
+                    />
+                    <div class="about">
+                        <div class="name">{{ user.name }}</div>
+                        <div class="status">
+                            <i class="fa fa-circle online"></i> online
+                        </div>
+                    </div>
                 </li>
-              </ul>
-              
-            </div> <!-- end chat-history -->
-            
-            <div class="chat-message clearfix">
-              <textarea @keydown.enter="sendMessage" v-model="message" name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
-                      
-              <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
-              <i class="fa fa-file-image-o"></i>
-              
-              <button>Send</button>
+            </ul>
+        </div>
 
-            </div> <!-- end chat-message -->
-            
-          </div> <!-- end chat -->
+        <div class="chat">
+            <div class="chat-header clearfix">
+                <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg"
+                    alt="avatar"
+                />
+
+                <div class="chat-about">
+                    <div class="chat-with" v-if="userMessage.user">
+                        {{ userMessage.user.name }}
+                    </div>
+                    <div class="chat-num-messages">already 1 902 messages</div>
+                </div>
+                <ul class="dropdown show">
+                              <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                </svg>
+                              </a>
+
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Delete All Message</a>
+                              </div>
+                            </ul>
+                <i class="fa fa-star"></i>
+            </div>
+            <!-- end chat-header -->
+
+            <div class="chat-history" v-chat-scroll>
+                <ul>
+                    <li
+                        class="clearfix"
+                        v-for="message in userMessage.message"
+                        :key="message.id"
+                    >
+                        <div class="message-data align-right">
+                            <span class="message-data-time">
+                                {{ message.created_at | timeformat }}
+                            </span>
+                            &nbsp; &nbsp;
+                            <span class="message-data-name">
+                                {{ message.user.name }}
+                            </span>
+                            <i class="fa fa-circle me"></i>
+                            <ul class="dropdown show">
+                              <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                </svg>
+                              </a>
+
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Delete</a>
+                              </div>
+                            </ul>
+                        </div>
+                        <div
+                            class="message float-right"
+                            :class="
+                                `${
+                                    message.user.id == userMessage.user.id
+                                        ? 'other-message'
+                                        : 'my-message'
+                                }`
+                            "
+                        >
+                            {{ message.message }}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- end chat-history -->
+
+            <div class="chat-message clearfix">
+                <textarea
+                    @keydown.enter="sendMessage"
+                    v-model="message"
+                    name="message-to-send"
+                    id="message-to-send"
+                    placeholder="Type your message"
+                    rows="3"
+                ></textarea>
+
+                <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+                <i class="fa fa-file-image-o"></i>
+
+                <button>Send</button>
+            </div>
+            <!-- end chat-message -->
+        </div>
+        <!-- end chat -->
     </div>
 </template>
 
 <script>
 export default {
-  mounted() {
-    this.$store.dispatch("userList")
-  },
-  data() {
-    return {
-      message:'',
-    }
-  },
-  computed: {
-    userList() {
-     return this.$store.getters.userList
+    mounted() {
+        this.$store.dispatch("userList");
     },
-    userMessage() {
-      return this.$store.getters.userMessage
-    }
-
-  },
-  
-  created() {
-
-  },
-  methods:{
-    selectUser(userId) {
-      this.$store.dispatch("userMessage",userId)
+    data() {
+        return {
+            message: ""
+        };
     },
-    sendMessage(e){
-      e.preventDefault();
-      if(this.message!=''){
-        axios.post('/sendmessage',{message:this.message,user_id:this.userMessage.user.id})
-        .then((response) => {
-          this.selectUser(this.userMessage.user.id);
-        })
-        this.message = '';
-      }
+    computed: {
+        userList() {
+            return this.$store.getters.userList;
+        },
+        userMessage() {
+            return this.$store.getters.userMessage;
+        }
+    },
+
+    created() {},
+    methods: {
+        selectUser(userId) {
+            this.$store.dispatch("userMessage", userId);
+        },
+        sendMessage(e) {
+            e.preventDefault();
+            if (this.message != "") {
+                axios
+                    .post("/sendmessage", {
+                        message: this.message,
+                        user_id: this.userMessage.user.id
+                    })
+                    .then(response => {
+                        this.selectUser(this.userMessage.user.id);
+                    });
+                this.message = "";
+            }
+        }
     }
-  }
-}
+};
 </script>
 
 <style>
-  .people-list ul {
-    overflow-y:scroll !important;
-  }
+.people-list ul {
+    overflow-y: scroll !important;
+}
 </style>
