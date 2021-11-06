@@ -38,7 +38,8 @@
                     <div class="chat-with" v-if="userMessage.user">
                         {{ userMessage.user.name }}
                     </div>
-                    <div class="chat-num-messages">already 1 902 messages</div>
+                    <div class="chat-num-messages p-2">already 1 902 messages   </div>
+                    &nbsp;&nbsp;
                 </div>
                 <ul class="dropdown show">
                               <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -166,5 +167,26 @@ export default {
 <style>
 .people-list ul {
     overflow-y: scroll !important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(2, 151, 59); 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
 }
 </style>
