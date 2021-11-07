@@ -2188,7 +2188,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.$store.dispatch("userList");
@@ -2227,7 +2226,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     deleteSingleMessage: function deleteSingleMessage(messageId) {
-      axios.get("/deletesinglemessage/".concat(messageId));
+      axios.get("/deletesinglemessage/".concat(messageId)).then(function (response) {});
     }
   }
 });
@@ -59955,9 +59954,7 @@ var render = function() {
                         "\n                        "
                     )
                   ]),
-                  _vm._v(
-                    "\n                           \n                        "
-                  ),
+                  _vm._v(" "),
                   _c("span", { staticClass: "message-data-name" }, [
                     _vm._v(
                       "\n                            " +

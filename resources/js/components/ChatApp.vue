@@ -67,7 +67,6 @@
                             <span class="message-data-time">
                                 {{ message.created_at | timeformat }}
                             </span>
-                            &nbsp; &nbsp;
                             <span class="message-data-name">
                                 {{ message.user.name }}
                             </span>
@@ -162,6 +161,9 @@ export default {
         },
         deleteSingleMessage(messageId) {
           axios.get(`/deletesinglemessage/${messageId}`)
+          .then((response) => {
+
+          })
         }
 
     }
