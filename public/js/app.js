@@ -2226,7 +2226,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     deleteSingleMessage: function deleteSingleMessage(messageId) {
-      axios.get("/deletesinglemessage/".concat(messageId)).then(function (response) {});
+      var _this2 = this;
+
+      axios.get("/deletesinglemessage/".concat(messageId)).then(function (response) {
+        _this2.selectUser(_this2.userMessage.user.id);
+      });
     }
   }
 });

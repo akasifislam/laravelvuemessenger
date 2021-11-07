@@ -162,7 +162,7 @@ export default {
         deleteSingleMessage(messageId) {
           axios.get(`/deletesinglemessage/${messageId}`)
           .then((response) => {
-
+              this.selectUser(this.userMessage.user.id)
           })
         }
 
