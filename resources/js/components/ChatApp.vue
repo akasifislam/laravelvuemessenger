@@ -42,16 +42,16 @@
                     &nbsp;&nbsp;
                 </div>
                 <ul class="dropdown show">
-                              <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                </svg>
-                              </a>
+                <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                </svg>
+                </a>
 
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Delete All Message</a>
-                              </div>
-                            </ul>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a @click.prevent="deleteAllMessage" class="dropdown-item" href="#">Delete All Message</a>
+                </div>
+            </ul>
                 <i class="fa fa-star"></i>
             </div>
             <!-- end chat-header -->
@@ -161,6 +161,12 @@ export default {
         },
         deleteSingleMessage(messageId) {
           axios.get(`/deletesinglemessage/${messageId}`)
+          .then((response) => {
+              this.selectUser(this.userMessage.user.id)
+          })
+        },
+        deleteAllMessage() {
+            axios.get(`/deleteallmessage/${this.userMessage.user.id}`)
           .then((response) => {
               this.selectUser(this.userMessage.user.id)
           })

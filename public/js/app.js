@@ -2231,6 +2231,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/deletesinglemessage/".concat(messageId)).then(function (response) {
         _this2.selectUser(_this2.userMessage.user.id);
       });
+    },
+    deleteAllMessage: function deleteAllMessage() {
+      var _this3 = this;
+
+      axios.get("/deleteallmessage/".concat(this.userMessage.user.id)).then(function (response) {
+        _this3.selectUser(_this3.userMessage.user.id);
+      });
     }
   }
 });
@@ -59933,7 +59940,29 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm._m(2)
+          _c(
+            "div",
+            {
+              staticClass: "dropdown-menu",
+              attrs: { "aria-labelledby": "dropdownMenuLink" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "dropdown-item",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.deleteAllMessage.apply(null, arguments)
+                    }
+                  }
+                },
+                [_vm._v("Delete All Message")]
+              )
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("i", { staticClass: "fa fa-star" })
@@ -60122,23 +60151,6 @@ var staticRenderFns = [
       _c("i", { staticClass: "fa fa-circle online" }),
       _vm._v(" online\n                    ")
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "dropdown-menu",
-        attrs: { "aria-labelledby": "dropdownMenuLink" }
-      },
-      [
-        _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-          _vm._v("Delete All Message")
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
