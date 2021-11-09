@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSend;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -63,7 +64,7 @@ class MessageController extends Controller
             'to' => $request->user_id,
             'type' => 1
         ]);
-        broadcast(new NewMessage($message));
+        broadcast(new MessageSend($message));
         return response()->json($message, 201);
     }
 
