@@ -63,6 +63,7 @@ class MessageController extends Controller
             'to' => $request->user_id,
             'type' => 1
         ]);
+        broadcast(new NewMessage($message));
         return response()->json($message, 201);
     }
 
