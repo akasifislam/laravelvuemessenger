@@ -38,20 +38,47 @@
                     <div class="chat-with" v-if="userMessage.user">
                         {{ userMessage.user.name }}
                     </div>
-                    <div class="chat-num-messages p-2">already 1 902 messages   </div>
+                    <div class="chat-num-messages p-2">
+                        already 1 902 messages
+                    </div>
                     &nbsp;&nbsp;
                 </div>
                 <ul class="dropdown show">
-                <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                </svg>
-                </a>
+                    <a
+                        class=""
+                        href="#"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-arrow-down-circle-fill"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                            />
+                        </svg>
+                    </a>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a @click.prevent="deleteAllMessage" class="dropdown-item" href="#">Delete All Message</a>
-                </div>
-            </ul>
+                    <div
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuLink"
+                    >
+                        <a
+                            @click.prevent="deleteAllMessage"
+                            class="dropdown-item"
+                            href="#"
+                            >Delete All Message</a
+                        >
+                    </div>
+                </ul>
                 <i class="fa fa-star"></i>
             </div>
             <!-- end chat-header -->
@@ -72,15 +99,42 @@
                             </span>
                             <i class="fa fa-circle me"></i>
                             <ul class="dropdown show">
-                              <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                </svg>
-                              </a>
+                                <a
+                                    class=""
+                                    href="#"
+                                    role="button"
+                                    id="dropdownMenuLink"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="bi bi-arrow-down-circle-fill"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                                        />
+                                    </svg>
+                                </a>
 
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a @click.prevent="deleteSingleMessage(message.id)" class="dropdown-item" href="#">Delete</a>
-                              </div>
+                                <div
+                                    class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuLink"
+                                >
+                                    <a
+                                        @click.prevent="
+                                            deleteSingleMessage(message.id)
+                                        "
+                                        class="dropdown-item"
+                                        href="#"
+                                        >Delete</a
+                                    >
+                                </div>
                             </ul>
                         </div>
                         <div
@@ -124,6 +178,12 @@
 <script>
 export default {
     mounted() {
+        Echo.channel(`orders.${this.order.id}`).listen(
+            "OrderShipmentStatusUpdated",
+            e => {
+                console.log(e.order.name);
+            }
+        );
         this.$store.dispatch("userList");
     },
     data() {
@@ -160,18 +220,17 @@ export default {
             }
         },
         deleteSingleMessage(messageId) {
-          axios.get(`/deletesinglemessage/${messageId}`)
-          .then((response) => {
-              this.selectUser(this.userMessage.user.id)
-          })
+            axios.get(`/deletesinglemessage/${messageId}`).then(response => {
+                this.selectUser(this.userMessage.user.id);
+            });
         },
         deleteAllMessage() {
-            axios.get(`/deleteallmessage/${this.userMessage.user.id}`)
-          .then((response) => {
-              this.selectUser(this.userMessage.user.id)
-          })
+            axios
+                .get(`/deleteallmessage/${this.userMessage.user.id}`)
+                .then(response => {
+                    this.selectUser(this.userMessage.user.id);
+                });
         }
-
     }
 };
 </script>
@@ -182,23 +241,23 @@ export default {
 }
 /* width */
 ::-webkit-scrollbar {
-  width: 4px;
+    width: 4px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgb(2, 151, 59); 
-  border-radius: 10px;
+    box-shadow: inset 0 0 5px rgb(2, 151, 59);
+    border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(255, 255, 255); 
-  border-radius: 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b30000; 
+    background: #b30000;
 }
 </style>

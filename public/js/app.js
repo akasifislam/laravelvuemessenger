@@ -2188,8 +2188,65 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
+    Echo.channel("orders.".concat(this.order.id)).listen("OrderShipmentStatusUpdated", function (e) {
+      console.log(e.order.name);
+    });
     this.$store.dispatch("userList");
   },
   data: function data() {
@@ -6891,7 +6948,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.people-list ul {\r\n    overflow-y: scroll !important;\n}\r\n/* width */\n::-webkit-scrollbar {\r\n  width: 4px;\n}\r\n\r\n/* Track */\n::-webkit-scrollbar-track {\r\n  box-shadow: inset 0 0 5px rgb(2, 151, 59); \r\n  border-radius: 10px;\n}\r\n \r\n/* Handle */\n::-webkit-scrollbar-thumb {\r\n  background: rgb(255, 255, 255); \r\n  border-radius: 10px;\n}\r\n\r\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\r\n  background: #b30000;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.people-list ul {\r\n    overflow-y: scroll !important;\n}\r\n/* width */\n::-webkit-scrollbar {\r\n    width: 4px;\n}\r\n\r\n/* Track */\n::-webkit-scrollbar-track {\r\n    box-shadow: inset 0 0 5px rgb(2, 151, 59);\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle */\n::-webkit-scrollbar-thumb {\r\n    background: rgb(255, 255, 255);\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\r\n    background: #b30000;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -66062,7 +66119,9 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "chat-num-messages p-2" }, [
-            _vm._v("already 1 902 messages   ")
+            _vm._v(
+              "\n                    already 1 902 messages\n                "
+            )
           ]),
           _vm._v("\n                  \n            ")
         ]),
