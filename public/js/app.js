@@ -2244,8 +2244,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
-    Echo.channel("orders.".concat(this.order.id)).listen("OrderShipmentStatusUpdated", function (e) {
-      console.log(e.order.name);
+    var _this = this;
+
+    Echo["private"]("chat.".concat(authuser.id)).listen("MessageSend", function (e) {
+      _this.selectUser(userId);
+
+      console.log(e.message.message);
     });
     this.$store.dispatch("userList");
   },
@@ -2268,7 +2272,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.dispatch("userMessage", userId);
     },
     sendMessage: function sendMessage(e) {
-      var _this = this;
+      var _this2 = this;
 
       e.preventDefault();
 
@@ -2277,23 +2281,23 @@ __webpack_require__.r(__webpack_exports__);
           message: this.message,
           user_id: this.userMessage.user.id
         }).then(function (response) {
-          _this.selectUser(_this.userMessage.user.id);
+          _this2.selectUser(_this2.userMessage.user.id);
         });
         this.message = "";
       }
     },
     deleteSingleMessage: function deleteSingleMessage(messageId) {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/deletesinglemessage/".concat(messageId)).then(function (response) {
-        _this2.selectUser(_this2.userMessage.user.id);
+        _this3.selectUser(_this3.userMessage.user.id);
       });
     },
     deleteAllMessage: function deleteAllMessage() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/deleteallmessage/".concat(this.userMessage.user.id)).then(function (response) {
-        _this3.selectUser(_this3.userMessage.user.id);
+        _this4.selectUser(_this4.userMessage.user.id);
       });
     }
   }

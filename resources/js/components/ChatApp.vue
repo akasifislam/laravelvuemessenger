@@ -178,10 +178,11 @@
 <script>
 export default {
     mounted() {
-        Echo.channel(`orders.${this.order.id}`).listen(
-            "OrderShipmentStatusUpdated",
-            e => {
-                console.log(e.order.name);
+        Echo.private(`chat.${authuser.id}`).listen(
+            "MessageSend",
+            (e) => {
+                this.selectUser(userId);
+                console.log(e.message.message);
             }
         );
         this.$store.dispatch("userList");
