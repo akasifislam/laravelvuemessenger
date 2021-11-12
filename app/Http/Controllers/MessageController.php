@@ -22,9 +22,11 @@ class MessageController extends Controller
 
     public function user_list()
     {
+        // return $users = User::latest()->where('id', '!=', auth()->user()->id)->get();
+        // $notuser = auth()->user()->id;
+        // return $user = User::where('id', !auth()->user()->id)->get();
         if (\Request::ajax()) {
-            $userlist = User::latest()
-                ->paginate(9);
+            $userlist = User::latest()->where('id', '!=', auth()->user()->id)->paginate(10);
             return response()->json($userlist, 200);
         }
         return abort(404);

@@ -23,6 +23,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::get('userlsit', [MessageController::class, 'user_list'])->name('user.list');
 Route::get('usermessage/{id}', [MessageController::class, 'user_message'])->name('user.message');
 Route::post('sendmessage', [MessageController::class, 'send_message'])->name('user.message.send');
 Route::get('deletesinglemessage/{id}', [MessageController::class, 'delete_single_message'])->name('single.message.delete');

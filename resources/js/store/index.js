@@ -19,7 +19,7 @@ export default {
     },
     actions: {  
         userList(context) {
-            axios.get("/api/userlsit")
+            axios.get("/userlsit")
             .then((response) => {
                 context.commit("userList",response.data.data)
             })

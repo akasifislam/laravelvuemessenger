@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('userlsit', [MessageController::class, 'user_list'])->name('user.list');
+// Route::get('userlsit', [MessageController::class, 'user_list'])->name('user.list');
 
 // Route::get('usermessage/{id}', [MessageController::class, 'user_message'])->name('user.message');

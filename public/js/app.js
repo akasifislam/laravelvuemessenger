@@ -2470,7 +2470,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   actions: {
     userList: function userList(context) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/userlsit").then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/userlsit").then(function (response) {
         context.commit("userList", response.data.data);
       });
     },
