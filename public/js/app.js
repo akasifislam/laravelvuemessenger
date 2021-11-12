@@ -2247,9 +2247,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     Echo["private"]("chat.".concat(authuser.id)).listen("MessageSend", function (e) {
-      _this.selectUser(userId);
+      _this.selectUser(e.message.form); // console.log(e.message.message);
 
-      console.log(e.message.message);
     });
     this.$store.dispatch("userList");
   },

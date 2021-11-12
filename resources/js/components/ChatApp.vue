@@ -181,8 +181,8 @@ export default {
         Echo.private(`chat.${authuser.id}`).listen(
             "MessageSend",
             (e) => {
-                this.selectUser(userId);
-                console.log(e.message.message);
+                this.selectUser(e.message.form);
+                // console.log(e.message.message);
             }
         );
         this.$store.dispatch("userList");
