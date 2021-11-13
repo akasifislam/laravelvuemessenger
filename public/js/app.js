@@ -2234,6 +2234,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -2243,10 +2245,14 @@ __webpack_require__.r(__webpack_exports__);
 
     });
     this.$store.dispatch("userList");
+    Echo["private"]('typeingevent').listenForWhisper('typing', function (e) {
+      _this.typeing = e.user.name;
+    });
   },
   data: function data() {
     return {
-      message: ""
+      message: "",
+      typeing: ""
     };
   },
   computed: {
@@ -2289,6 +2295,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/deleteallmessage/".concat(this.userMessage.user.id)).then(function (response) {
         _this4.selectUser(_this4.userMessage.user.id);
+      });
+    },
+    typeingEvent: function typeingEvent() {
+      Echo["private"]('typeingevent').whisper('typing', {
+        'user': authuser,
+        'typeing': this.message
       });
     }
   }
@@ -66308,6 +66320,10 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "chat-message clearfix" }, [
+        _vm.typeing
+          ? _c("p", [_vm._v(_vm._s(_vm.typeing) + " is typeing")])
+          : _vm._e(),
+        _vm._v(" "),
         _vm.userMessage.user
           ? _c("textarea", {
               directives: [
@@ -66326,15 +66342,18 @@ var render = function() {
               },
               domProps: { value: _vm.message },
               on: {
-                keydown: function($event) {
-                  if (
-                    !$event.type.indexOf("key") &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                  ) {
-                    return null
-                  }
-                  return _vm.sendMessage.apply(null, arguments)
-                },
+                keydown: [
+                  function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.sendMessage.apply(null, arguments)
+                  },
+                  _vm.typeingEvent
+                ],
                 input: function($event) {
                   if ($event.target.composing) {
                     return

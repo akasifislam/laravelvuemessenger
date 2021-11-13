@@ -137,9 +137,11 @@
             <!-- end chat-history -->
 
             <div class="chat-message clearfix">
+                <p v-if="typeing">{{ typeing }} is typeing</p>
                 <textarea
                     v-if="userMessage.user"
                     @keydown.enter="sendMessage"
+                    @keydown="typeingEvent"
                     v-model="message"
                     name="message-to-send"
                     id="message-to-send"
@@ -178,10 +180,16 @@ export default {
             }
         );
         this.$store.dispatch("userList");
+
+        Echo.private('typeingevent')
+        .listenForWhisper('typing', (e) => {
+           this.typeing = e.user.name
+        });
     },
     data() {
         return {
-            message: ""
+            message: "",
+            typeing: ""
         };
     },
     computed: {
@@ -223,6 +231,14 @@ export default {
                 .then(response => {
                     this.selectUser(this.userMessage.user.id);
                 });
+        },
+        typeingEvent() {
+            Echo.private('typeingevent')
+            .whisper('typing', {
+                'user': authuser,
+                'typeing': this.message
+            
+            });
         }
     }
 };
