@@ -20,7 +20,9 @@
                     <div class="about">
                         <div class="name">{{ user.name }}</div>
                         <div class="status">
-                            <i class="fa fa-circle online"></i> online
+                            <div v-if="onlineUser(user.id)"><i class="fa fa-circle online"></i> online</div>
+                            
+                           <div v-else> <i class="fa fa-circle offline"></i> offline</div>
                         </div>
                     </div>
                 </li>
@@ -170,6 +172,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
     mounted() {
         Echo.private(`chat.${authuser.id}`).listen(
@@ -199,7 +203,8 @@ export default {
     data() {
         return {
             message: "",
-            typeing: ""
+            typeing: "",
+            users: []
         };
     },
     computed: {
@@ -211,7 +216,21 @@ export default {
         }
     },
 
-    created() {},
+    created() {
+        Echo.join('liveuser')
+        .here((users) => {
+            this.users = users
+        })
+        .joining((user) => {
+            this.users = user
+        })
+        .leaving((user) => {
+            console.log(user.name);
+        })
+        .error((error) => {
+            console.error(error);
+        });
+    },
     methods: {
         selectUser(userId) {
             this.$store.dispatch("userMessage", userId);
@@ -250,6 +269,9 @@ export default {
                 'userId' : userId
             
             });
+        },
+        onlineUser(userId) {
+            return _.find(this.users,{'id': userId});
         }
     }
 };

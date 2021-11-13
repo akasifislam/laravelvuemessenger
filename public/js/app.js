@@ -2065,6 +2065,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2236,6 +2238,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -2262,7 +2267,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       message: "",
-      typeing: ""
+      typeing: "",
+      users: []
     };
   },
   computed: {
@@ -2273,13 +2279,25 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.getters.userMessage;
     }
   },
-  created: function created() {},
+  created: function created() {
+    var _this2 = this;
+
+    Echo.join('liveuser').here(function (users) {
+      _this2.users = users;
+    }).joining(function (user) {
+      _this2.users = user;
+    }).leaving(function (user) {
+      console.log(user.name);
+    }).error(function (error) {
+      console.error(error);
+    });
+  },
   methods: {
     selectUser: function selectUser(userId) {
       this.$store.dispatch("userMessage", userId);
     },
     sendMessage: function sendMessage(e) {
-      var _this2 = this;
+      var _this3 = this;
 
       e.preventDefault();
 
@@ -2288,23 +2306,23 @@ __webpack_require__.r(__webpack_exports__);
           message: this.message,
           user_id: this.userMessage.user.id
         }).then(function (response) {
-          _this2.selectUser(_this2.userMessage.user.id);
+          _this3.selectUser(_this3.userMessage.user.id);
         });
         this.message = "";
       }
     },
     deleteSingleMessage: function deleteSingleMessage(messageId) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/deletesinglemessage/".concat(messageId)).then(function (response) {
-        _this3.selectUser(_this3.userMessage.user.id);
+        _this4.selectUser(_this4.userMessage.user.id);
       });
     },
     deleteAllMessage: function deleteAllMessage() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get("/deleteallmessage/".concat(this.userMessage.user.id)).then(function (response) {
-        _this4.selectUser(_this4.userMessage.user.id);
+        _this5.selectUser(_this5.userMessage.user.id);
       });
     },
     typeingEvent: function typeingEvent(userId) {
@@ -2312,6 +2330,11 @@ __webpack_require__.r(__webpack_exports__);
         'user': authuser,
         'typeing': this.message,
         'userId': userId
+      });
+    },
+    onlineUser: function onlineUser(userId) {
+      return lodash__WEBPACK_IMPORTED_MODULE_0___default().find(this.users, {
+        'id': userId
       });
     }
   }
@@ -66107,7 +66130,17 @@ var render = function() {
               _c("div", { staticClass: "about" }, [
                 _c("div", { staticClass: "name" }, [_vm._v(_vm._s(user.name))]),
                 _vm._v(" "),
-                _vm._m(1, true)
+                _c("div", { staticClass: "status" }, [
+                  _vm.onlineUser(user.id)
+                    ? _c("div", [
+                        _c("i", { staticClass: "fa fa-circle online" }),
+                        _vm._v(" online")
+                      ])
+                    : _c("div", [
+                        _c("i", { staticClass: "fa fa-circle offline" }),
+                        _vm._v(" offline")
+                      ])
+                ])
               ])
             ]
           )
@@ -66428,15 +66461,6 @@ var staticRenderFns = [
       _c("input", { attrs: { type: "text", placeholder: "search" } }),
       _vm._v(" "),
       _c("i", { staticClass: "fa fa-search" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "status" }, [
-      _c("i", { staticClass: "fa fa-circle online" }),
-      _vm._v(" online\n                    ")
     ])
   }
 ]
