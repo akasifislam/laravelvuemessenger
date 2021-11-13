@@ -9,7 +9,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
-$green: #7d53e0;
+$green: #53e07d;
 $blue: #f146e3;
 $orange: #E38968;
 $gray: #b8b8bb;
@@ -28,7 +28,7 @@ $gray: #b8b8bb;
 .container-chat {
   margin: 0 auto;
   width: 850px;
-  background: #d737ff;
+  background: #698cec;
   border-radius: 5px;
   color: #ffffff;
 }
@@ -92,11 +92,11 @@ $gray: #b8b8bb;
 .chat {
   width: 590px;
   float:left;
-  background: #F2F5F8;
+  background: #747475;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   
-  color: #434651;
+  color: #000005;
   
   .chat-header {
     padding: 20px;
@@ -123,7 +123,7 @@ $gray: #b8b8bb;
     
     .fa-star {
       float: right;
-      color: #D8DADF;
+      color: #f3ad2b; 
       font-size: 20px;
       margin-top: 12px;
     }

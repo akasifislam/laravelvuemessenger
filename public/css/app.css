@@ -10012,7 +10012,7 @@ h3 {
 .container-chat {
   margin: 0 auto;
   width: 850px;
-  background: #d737ff;
+  background: #698cec;
   border-radius: 5px;
   color: #ffffff;
 }
@@ -10063,10 +10063,10 @@ h3 {
 .chat {
   width: 590px;
   float: left;
-  background: #F2F5F8;
+  background: #747475;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  color: #434651;
+  color: #000005;
 }
 .chat .chat-header {
   padding: 20px;
@@ -10089,7 +10089,7 @@ h3 {
 }
 .chat .chat-header .fa-star {
   float: right;
-  color: #D8DADF;
+  color: #f3ad2b;
   font-size: 20px;
   margin-top: 12px;
 }
@@ -10128,12 +10128,12 @@ h3 {
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-bottom-color: #7d53e0;
+  border-bottom-color: #53e07d;
   border-width: 10px;
   margin-left: -10px;
 }
 .chat .chat-history .my-message {
-  background: #7d53e0;
+  background: #53e07d;
 }
 .chat .chat-history .other-message {
   background: #f146e3;
@@ -10179,7 +10179,7 @@ h3 {
 }
 
 .online {
-  color: #7d53e0;
+  color: #53e07d;
 }
 
 .offline {

@@ -26,7 +26,7 @@ class MessageController extends Controller
         // $notuser = auth()->user()->id;
         // return $user = User::where('id', !auth()->user()->id)->get();
         if (\Request::ajax()) {
-            $userlist = User::latest()->where('id', '!=', auth()->user()->id)->get();
+            $userlist = User::latest()->where('id', '!=', auth()->user()->id)->paginate(10);
             return response()->json($userlist, 200);
         }
         return abort(404);

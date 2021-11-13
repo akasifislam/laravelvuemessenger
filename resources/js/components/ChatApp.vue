@@ -14,8 +14,8 @@
                     :key="user.id"
                 >
                     <img
-                        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg"
-                        alt="avatar"
+                        width="50" height="60"
+                        src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png"
                     />
                     <div class="about">
                         <div class="name">{{ user.name }}</div>
@@ -53,17 +53,8 @@
                         aria-haspopup="true"
                         aria-expanded="false"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-arrow-down-circle-fill"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
-                            />
+                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                         </svg>
                     </a>
 
@@ -108,17 +99,8 @@
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        class="bi bi-arrow-down-circle-fill"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path
-                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
-                                        />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                                     </svg>
                                 </a>
 
@@ -156,6 +138,7 @@
 
             <div class="chat-message clearfix">
                 <textarea
+                    v-if="userMessage.user"
                     @keydown.enter="sendMessage"
                     v-model="message"
                     name="message-to-send"
@@ -163,11 +146,20 @@
                     placeholder="Type your message"
                     rows="3"
                 ></textarea>
+                <textarea
+                    v-else
+                    disabled
+                    @keydown.enter="sendMessage"
+                    v-model="message"
+                    name="message-to-send"
+                    id="message-to-send"
+                    rows="3"
+                ></textarea>
 
                 <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
                 <i class="fa fa-file-image-o"></i>
 
-                <button>Send</button>
+                <!-- <button>Send</button> -->
             </div>
             <!-- end chat-message -->
         </div>

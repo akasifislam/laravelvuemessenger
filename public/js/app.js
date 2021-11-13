@@ -2234,14 +2234,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -66082,9 +66074,10 @@ var render = function() {
             [
               _c("img", {
                 attrs: {
+                  width: "50",
+                  height: "60",
                   src:
-                    "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg",
-                  alt: "avatar"
+                    "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png"
                 }
               }),
               _vm._v(" "),
@@ -66146,7 +66139,7 @@ var render = function() {
               _c(
                 "svg",
                 {
-                  staticClass: "bi bi-arrow-down-circle-fill",
+                  staticClass: "bi bi-three-dots",
                   attrs: {
                     xmlns: "http://www.w3.org/2000/svg",
                     width: "16",
@@ -66159,7 +66152,7 @@ var render = function() {
                   _c("path", {
                     attrs: {
                       d:
-                        "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                        "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
                     }
                   })
                 ]
@@ -66242,7 +66235,7 @@ var render = function() {
                         _c(
                           "svg",
                           {
-                            staticClass: "bi bi-arrow-down-circle-fill",
+                            staticClass: "bi bi-three-dots",
                             attrs: {
                               xmlns: "http://www.w3.org/2000/svg",
                               width: "16",
@@ -66255,7 +66248,7 @@ var render = function() {
                             _c("path", {
                               attrs: {
                                 d:
-                                  "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                                  "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
                               }
                             })
                           ]
@@ -66315,46 +66308,79 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "chat-message clearfix" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.message,
-              expression: "message"
-            }
-          ],
-          attrs: {
-            name: "message-to-send",
-            id: "message-to-send",
-            placeholder: "Type your message",
-            rows: "3"
-          },
-          domProps: { value: _vm.message },
-          on: {
-            keydown: function($event) {
-              if (
-                !$event.type.indexOf("key") &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
+        _vm.userMessage.user
+          ? _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.message,
+                  expression: "message"
+                }
+              ],
+              attrs: {
+                name: "message-to-send",
+                id: "message-to-send",
+                placeholder: "Type your message",
+                rows: "3"
+              },
+              domProps: { value: _vm.message },
+              on: {
+                keydown: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.sendMessage.apply(null, arguments)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.message = $event.target.value
+                }
               }
-              return _vm.sendMessage.apply(null, arguments)
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            })
+          : _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.message,
+                  expression: "message"
+                }
+              ],
+              attrs: {
+                disabled: "",
+                name: "message-to-send",
+                id: "message-to-send",
+                rows: "3"
+              },
+              domProps: { value: _vm.message },
+              on: {
+                keydown: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.sendMessage.apply(null, arguments)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.message = $event.target.value
+                }
               }
-              _vm.message = $event.target.value
-            }
-          }
-        }),
+            }),
         _vm._v(" "),
         _c("i", { staticClass: "fa fa-file-o" }),
         _vm._v("    \n            "),
-        _c("i", { staticClass: "fa fa-file-image-o" }),
-        _vm._v(" "),
-        _c("button", [_vm._v("Send")])
+        _c("i", { staticClass: "fa fa-file-image-o" })
       ])
     ])
   ])
