@@ -2246,7 +2246,17 @@ __webpack_require__.r(__webpack_exports__);
     });
     this.$store.dispatch("userList");
     Echo["private"]('typeingevent').listenForWhisper('typing', function (e) {
-      _this.typeing = e.user.name;
+      // console.log(authuser.id);
+      // console.log(e.userId);
+      // console.log(e.user.id);
+      // console.log(this.userMessage.user.id);
+      if (authuser.id == e.userId && e.user.id == _this.userMessage.user.id) {
+        _this.typeing = e.user.name;
+      }
+
+      setTimeout(function () {
+        _this.typeing = '';
+      }, 2000);
     });
   },
   data: function data() {
@@ -2297,10 +2307,11 @@ __webpack_require__.r(__webpack_exports__);
         _this4.selectUser(_this4.userMessage.user.id);
       });
     },
-    typeingEvent: function typeingEvent() {
+    typeingEvent: function typeingEvent(userId) {
       Echo["private"]('typeingevent').whisper('typing', {
         'user': authuser,
-        'typeing': this.message
+        'typeing': this.message,
+        'userId': userId
       });
     }
   }
@@ -66321,7 +66332,9 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "chat-message clearfix" }, [
         _vm.typeing
-          ? _c("p", [_vm._v(_vm._s(_vm.typeing) + " is typeing")])
+          ? _c("p", { staticStyle: { color: "blue" } }, [
+              _vm._v(_vm._s(_vm.typeing) + " is typeing")
+            ])
           : _vm._e(),
         _vm._v(" "),
         _vm.userMessage.user
@@ -66352,7 +66365,9 @@ var render = function() {
                     }
                     return _vm.sendMessage.apply(null, arguments)
                   },
-                  _vm.typeingEvent
+                  function($event) {
+                    return _vm.typeingEvent(_vm.userMessage.user.id)
+                  }
                 ],
                 input: function($event) {
                   if ($event.target.composing) {

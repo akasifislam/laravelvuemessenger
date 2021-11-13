@@ -137,11 +137,11 @@
             <!-- end chat-history -->
 
             <div class="chat-message clearfix">
-                <p v-if="typeing">{{ typeing }} is typeing</p>
+                <p style="color:blue" v-if="typeing">{{ typeing }} is typeing</p>
                 <textarea
                     v-if="userMessage.user"
                     @keydown.enter="sendMessage"
-                    @keydown="typeingEvent"
+                    @keydown="typeingEvent(userMessage.user.id)"
                     v-model="message"
                     name="message-to-send"
                     id="message-to-send"
@@ -183,7 +183,17 @@ export default {
 
         Echo.private('typeingevent')
         .listenForWhisper('typing', (e) => {
-           this.typeing = e.user.name
+            // console.log(authuser.id);
+            // console.log(e.userId);
+            // console.log(e.user.id);
+            // console.log(this.userMessage.user.id);
+            if (authuser.id == e.userId &&  e.user.id ==this.userMessage.user.id) {
+                
+                this.typeing = e.user.name
+            }
+           setTimeout(() => {
+               this.typeing = ''
+           },2000);
         });
     },
     data() {
@@ -232,11 +242,12 @@ export default {
                     this.selectUser(this.userMessage.user.id);
                 });
         },
-        typeingEvent() {
+        typeingEvent(userId) {
             Echo.private('typeingevent')
             .whisper('typing', {
                 'user': authuser,
-                'typeing': this.message
+                'typeing': this.message,
+                'userId' : userId
             
             });
         }
