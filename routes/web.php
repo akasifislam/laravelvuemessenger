@@ -30,6 +30,3 @@ Route::post('sendmessage', [MessageController::class, 'send_message'])->name('us
 Route::get('deletesinglemessage/{id}', [MessageController::class, 'delete_single_message'])->name('single.message.delete');
 
 Route::get('deleteallmessage/{id}', [MessageController::class, 'delete_all_message'])->name('all.message.delete');
-
-
-// Route::get('/shbfvdgbdhs', [MessageController::class, 'user_list']);
